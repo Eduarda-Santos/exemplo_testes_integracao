@@ -58,5 +58,27 @@ public class JDBCUserDAO implements IUserDAO{
         return user;
 
     }
+    public User getById(int id) throws Exception{
+        User user = null;
+
+        PreparedStatement pstm = con.prepareStatement("SELECT * FROM users WHERE id=?");
+        
+        pstm.setString(1, id);
+
+        ResultSet rs= pstm.executeQuery();
+
+        if(rs.next()){
+            String nome = rs.getString("name");
+            String email = rs.getString("email");
+        
+            user = new User(id, nome, email);
+        }
+
+        rs.close();
+        pstm.close();
+
+        return user;
+
+    }
 
 }

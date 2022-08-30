@@ -58,6 +58,24 @@ public class JDBCUserDAOTest{
 
     }
 
+    public void testBuscaUserPorId() throws Exception{
+
+        User user = new User(-1, "Zé", "ze@teste.com");
+
+        IUserDAO dao = new JDBCUserDAO(con);
+        
+        User ret = dao.add(user);
+
+
+        User busca = dao.getById(ret.getId);
+        
+        assertNotNull(busca);
+        assertEquals("Zé", busca.getNome());
+        assertEquals("ze@teste.com", busca.getEmail);
+
+    }
+
+
     @AfterEach
     public void depois() throws Exception{
         con.rollback();
