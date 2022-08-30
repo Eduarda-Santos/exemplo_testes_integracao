@@ -29,8 +29,6 @@ public class JDBCUserDAOTest{
         con.setAutoCommit(false);
     }
 
-
-
     @Test
     public void testInsereUsuario() throws Exception{
 

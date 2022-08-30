@@ -14,6 +14,7 @@ public class JDBCUserDAO implements IUserDAO{
 
     public JDBCUserDAO(Connection con){
         this.con = con;
+
     }
     
     public User add(User user) throws Exception{
